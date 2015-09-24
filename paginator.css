@@ -83,7 +83,7 @@ div.pagi {
   display: inline-block;
   border: 2px solid #808080;
   padding: 3px 5px;
-  margin: -3px 0;
+  margin: -3px 3px;
   border-radius: 5px;
   color: #000;
 }
