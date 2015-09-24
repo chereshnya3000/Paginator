@@ -18,15 +18,62 @@ $(document).ready(function() {
 
   /* определяем переменную - количество ссылок отображаемых в pagination */
   var linksQty = 10;
-  var currentPage = 1;
-
-  $(currentPage).addClass("active");
 
   for (var i = 0; i < linksQty; i++) {
-    $(".pagi").append("<span>" + i + "</span>").click(function() {
-      
-    });
+    $(".pagi").append("<span>" + i + "</span>");
   }
+
+  /* делаем активную первую кнопку по умолчанию */
+
+  $(".pagi span").first().addClass("active");
+
+
+
+
+  /* создаем функцию для тушения класса active */
+  var cancelActive = function(pagibuttons) {
+
+    pagibuttons.each(function() {
+      if (pagibuttons.hasClass("active")) 
+      {  
+        pagibuttons.removeAttr("class");
+      }
+    });
+
+  }
+
+
+  /* создаем активную кнопку по клику */
+
+  $(".pagi span").each(function(index) {
+
+    $(this).click(function() {
+
+      cancelActive($(".pagi span"));
+
+      $(this).addClass("active");
+
+    });
+
+  });
+
+  /* добавляем действие для кнопки "предыдущая" */
+
+  $(".previous").click(function() {
+
+    $(".pagi span").each(function(index) {
+
+        var curr = $(".pagi span").hasClass("active");
+  
+        /* препятствие 24.09.2015 */
+        
+        curr = curr.prev();
+
+        console.log(curr);
+        
+      });
+
+  });
 
 
   $(".pagination").append("<div class='toend'></div>");
