@@ -88,11 +88,6 @@ div.pagi {
   color: #000;
 }
 
-.pagi span:hover {
-  background-color: #86c157;
-  color: #fff;
-}
-
 .active {
   background-color: #86c157;
   color: #fff !important;
