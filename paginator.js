@@ -1,16 +1,17 @@
 $(document).ready(function() {
 
-  $('body').append("<div class='content'></div>");
-  $('body').append("<div class='pagination'></div>");
+  var myBody = $('body');
+  myBody.append("<div class='content'></div>");
+  myBody.append("<div class='pagination'></div>");
 
-  $(".pagination").append("<div class='tostart'></div>");
+  var pagination = $(".pagination");
+  pagination.append("<div class='tostart'></div>");
   $(".tostart").text("в начало");
 
-  $(".pagination").append("<div class='previous'></div>");
+  pagination.append("<div class='previous'></div>");
   $(".previous").text("предыдущая");
 
-
-  $(".pagination").append("<div class='pagi'></div>");
+  pagination.append("<div class='pagi'></div>");
 
   var resultsAmount = 1000000;
   var maxOnPage = 10;
@@ -19,16 +20,25 @@ $(document).ready(function() {
   /* определяем переменную - количество ссылок отображаемых в pagination */
   var linksQty = 10;
 
+  var pagi = $(".pagi");
   for (var i = 0; i < linksQty; i++) {
-    $(".pagi").append("<span>" + i + "</span>");
+    var pageIndex = i+1;
+    pagi.append("<span>" + pageIndex + "</span>");
+    var elems = pagi.children();
+    var lastSpan = elems[elems.length-1];
+
+    lastSpan.click(function() {
+
+      cancelActive($(".pagi span"));
+
+      $(this).addClass("active");
+
+    });
   }
 
-  /* делаем активную первую кнопку по умолчанию */
+  $(pagi.children()[0]).addClass("active");
 
-  $(".pagi span").first().addClass("active");
-
-
-
+ /*Оптимизировать функцию тушения!!!
 
   /* создаем функцию для тушения класса active */
   var cancelActive = function(pagibuttons) {
@@ -42,21 +52,8 @@ $(document).ready(function() {
 
   }
 
-
-  /* создаем активную кнопку по клику */
-
-  $(".pagi span").each(function(index) {
-
-    $(this).click(function() {
-
-      cancelActive($(".pagi span"));
-
-      $(this).addClass("active");
-
-    });
-
-  });
-
+  
+ 
   /* добавляем действие для кнопки "предыдущая" */
 
   $(".previous").click(function() {
@@ -75,11 +72,12 @@ $(document).ready(function() {
 
   });
 
-
-  $(".pagination").append("<div class='toend'></div>");
+  var pagination = $(".pagination");
+  pagination.append("<div class='toend'></div>");
   $(".toend").text("в конец");
 
-  $(".pagination").append("<div class='next'></div>");
+  pagination.append("<div class='next'></div>");
   $(".next").text("следующая");
 
 });
+
