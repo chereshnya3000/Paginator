@@ -31,41 +31,13 @@ $(document).ready(function() {
 
     lastSpan.click(function() {
 
+      $(pagi.children(".active")).removeAttr("class");
       $(this).addClass("active");
 
     });
   }
 
   $(pagi.children()[0]).addClass("active");
-  var activeElement = $(pagi.children(".active"));
-  
-
-  // console.log(activeElement);
-
-  // var cancelActive = function(pagibuttons) {
-
-  //     if (activeElement.hasClass("active")) 
-  //     {  
-  //       pagibuttons.removeAttr("class");
-  //     }
-  //   }
-
-
-
- /*Оптимизировать функцию тушения!!!
-
-  /* создаем функцию для тушения класса active */
-  // var cancelActive = function(pagibuttons) {
-
-  //   pagibuttons.each(function() {
-  //     if (pagibuttons.hasClass("active")) 
-  //     {  
-  //       pagibuttons.removeAttr("class");
-  //     }
-  //   });
-
-  // }
-
   
  
   /* добавляем действие для кнопки "предыдущая" */
