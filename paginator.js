@@ -21,15 +21,15 @@ $(document).ready(function() {
   var linksQty = 10;
 
   var pagi = $(".pagi");
+  
+
   for (var i = 0; i < linksQty; i++) {
     var pageIndex = i+1;
     pagi.append("<span>" + pageIndex + "</span>");
     var elems = pagi.children();
-    var lastSpan = elems[elems.length-1];
+    var lastSpan = elems.last();
 
     lastSpan.click(function() {
-
-      cancelActive($(".pagi span"));
 
       $(this).addClass("active");
 
@@ -37,20 +37,34 @@ $(document).ready(function() {
   }
 
   $(pagi.children()[0]).addClass("active");
+  var activeElement = $(pagi.children(".active"));
+  
+
+  // console.log(activeElement);
+
+  // var cancelActive = function(pagibuttons) {
+
+  //     if (activeElement.hasClass("active")) 
+  //     {  
+  //       pagibuttons.removeAttr("class");
+  //     }
+  //   }
+
+
 
  /*Оптимизировать функцию тушения!!!
 
   /* создаем функцию для тушения класса active */
-  var cancelActive = function(pagibuttons) {
+  // var cancelActive = function(pagibuttons) {
 
-    pagibuttons.each(function() {
-      if (pagibuttons.hasClass("active")) 
-      {  
-        pagibuttons.removeAttr("class");
-      }
-    });
+  //   pagibuttons.each(function() {
+  //     if (pagibuttons.hasClass("active")) 
+  //     {  
+  //       pagibuttons.removeAttr("class");
+  //     }
+  //   });
 
-  }
+  // }
 
   
  
@@ -72,7 +86,6 @@ $(document).ready(function() {
 
   });
 
-  var pagination = $(".pagination");
   pagination.append("<div class='toend'></div>");
   $(".toend").text("в конец");
 
