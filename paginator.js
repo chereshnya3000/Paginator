@@ -27,11 +27,10 @@ $(document).ready(function() {
     var pageIndex = i+1;
     pagi.append("<span>" + pageIndex + "</span>");
 	
-    $(pagi.children().last()).click(function() 
-	{
-		$(currentActElem).removeAttr("class");
-		$(this).addClass("active");
-		currentActElem = this;
+    $(pagi.children().last()).click(function() {
+  		$(currentActElem).removeAttr("class");
+  		$(this).addClass("active");
+  		currentActElem = this;
     });
   }
 
@@ -39,8 +38,7 @@ $(document).ready(function() {
   $(currentActElem).addClass("active");  
  
   /* добавляем действие для кнопки "предыдущая" */
-  $(".previous").click(function() 
-  {
+  $(".previous").click(function() {
 		$(currentActElem).removeAttr("class");
 		prevElem = $(currentActElem).prev();
 		$(prevElem).addClass("active");
@@ -52,6 +50,15 @@ $(document).ready(function() {
 
   pagination.append("<div class='next'></div>");
   $(".next").text("следующая");
+
+  /* добавляем действие для кнопки "следующая" */
+
+  $(".next").click(function() {
+    $(currentActElem).removeAttr("class");
+    nextElem = $(currentActElem).next();
+    $(nextElem).addClass("active");
+    currentActElem = nextElem;
+  });
 
 });
 
