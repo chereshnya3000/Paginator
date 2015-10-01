@@ -36,25 +36,15 @@ $(document).ready(function() {
   }
 
   var currentActElem =  pagi.children()[0];
-  $(currentActElem).addClass("active");
-  
+  $(currentActElem).addClass("active");  
  
   /* добавляем действие для кнопки "предыдущая" */
-
-  $(".previous").click(function() {
-
-    $(".pagi span").each(function(index) {
-
-        var curr = $(".pagi span").hasClass("active");
-  
-        /* препятствие 24.09.2015 */
-        
-        curr = curr.prev();
-
-        console.log(curr);
-        
-      });
-
+  $(".previous").click(function() 
+  {
+		$(currentActElem).removeAttr("class");
+		prevElem = $(currentActElem).prev();
+		$(prevElem).addClass("active");
+		currentActElem = prevElem;	
   });
 
   pagination.append("<div class='toend'></div>");
