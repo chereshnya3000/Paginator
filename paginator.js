@@ -22,22 +22,21 @@ $(document).ready(function() {
 
   var pagi = $(".pagi");
   
-
-  for (var i = 0; i < linksQty; i++) {
+  for (var i = 0; i < linksQty; i++) 
+  {
     var pageIndex = i+1;
     pagi.append("<span>" + pageIndex + "</span>");
-    var elems = pagi.children();
-    var lastSpan = elems.last();
-
-    lastSpan.click(function() {
-
-      $(pagi.children(".active")).removeAttr("class");
-      $(this).addClass("active");
-
+	
+    $(pagi.children().last()).click(function() 
+	{
+		$(currentActElem).removeAttr("class");
+		$(this).addClass("active");
+		currentActElem = this;
     });
   }
 
-  $(pagi.children()[0]).addClass("active");
+  var currentActElem =  pagi.children()[0];
+  $(currentActElem).addClass("active");
   
  
   /* добавляем действие для кнопки "предыдущая" */
