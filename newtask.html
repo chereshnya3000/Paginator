@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title></title>
+
+  <style type="text/css">
+    div {
+      border: 1px dotted blue;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    div:last-of-type {
+      display: block;
+      margin-top: 30px;
+      width: 100%;
+    }
+  </style>
+  
+  <script type="text/javascript"src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      var elements = $("body div");
+      var historyBlock = $(".summary");
+      var clickedHistory = [];
+
+      elements.each(function(index) {
+
+        $(this).click(function() {
+
+          clickedHistory.push(this);
+          
+          /* записываем предыдущее значение в блок текст */
+          var historyText = "";
+          $(clickedHistory).each(function() {
+            historyText += $(this).text();
+          }); 
+
+          /* добавляем новое значение к существующему значению */
+          historyBlock.text(historyText);  
+
+        });
+
+      });
+
+    });
+
+  </script>
+</head>
+<body>
+
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+
+  <div class="summary"></div>
+
+</body>
+</html>
