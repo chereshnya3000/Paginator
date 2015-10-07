@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
   }
 
-  var currentActElem =  pagi.children()[0];
+  var currentActElem = pagi.children()[0];
   $(currentActElem).addClass("active");  
  
  $(".previous").click(function() {
