@@ -59,6 +59,8 @@ $(".next").click(function() {
 
 
 
+console.log(currentActElem);
+
 
 
 
