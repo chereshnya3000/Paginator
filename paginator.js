@@ -11,6 +11,12 @@ $(document).ready(function() {
   pagination.append("<div class='previous'></div>");
   $(".previous").text("предыдущая");
 
+  pagination.append("<div class='toend'></div>");
+  $(".toend").text("в конец");
+
+  pagination.append("<div class='next'></div>");
+  $(".next").text("следующая");
+
   pagination.append("<div class='pagi'></div>");
 
   var resultsAmount = 1000000;
@@ -26,39 +32,37 @@ $(document).ready(function() {
   {
     var pageIndex = i+1;
     pagi.append("<span>" + pageIndex + "</span>");
-	
+  
     $(pagi.children().last()).click(function() {
-  		$(currentActElem).removeAttr("class");
-  		$(this).addClass("active");
-  		currentActElem = this;
+      $(currentActElem).removeAttr("class");
+      $(this).addClass("active");
+      currentActElem = this;
     });
   }
 
   var currentActElem =  pagi.children()[0];
   $(currentActElem).addClass("active");  
  
-  /* добавляем действие для кнопки "предыдущая" */
-  $(".previous").click(function() {
-		$(currentActElem).removeAttr("class");
-		prevElem = $(currentActElem).prev();
-		$(prevElem).addClass("active");
-		currentActElem = prevElem;	
-  });
+ $(".previous").click(function() {
+    $(currentActElem).removeAttr("class");
+    prevElem = $(currentActElem).prev();
+    $(prevElem).addClass("active");
+    currentActElem = prevElem;
+ });
 
-  pagination.append("<div class='toend'></div>");
-  $(".toend").text("в конец");
-
-  pagination.append("<div class='next'></div>");
-  $(".next").text("следующая");
-
-  /* добавляем действие для кнопки "следующая" */
-
-  $(".next").click(function() {
+$(".next").click(function() {
     $(currentActElem).removeAttr("class");
     nextElem = $(currentActElem).next();
     $(nextElem).addClass("active");
     currentActElem = nextElem;
-  });
+ });
 
+
+
+
+
+
+  
+
+  
 });
-
