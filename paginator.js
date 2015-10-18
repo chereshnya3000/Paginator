@@ -44,22 +44,31 @@ $(document).ready(function() {
   $(currentActElem).addClass("active");  
  
  $(".previous").click(function() {
+    var prevElem = $(currentActElem).prev();
+    var myFirst = $(currentActElem).parent().children().first();
+    if (myFirst.is($(currentActElem))){
+    return;
+  }
     $(currentActElem).removeAttr("class");
-    prevElem = $(currentActElem).prev();
     $(prevElem).addClass("active");
     currentActElem = prevElem;
  });
 
+
+
 $(".next").click(function() {
     $(currentActElem).removeAttr("class");
-    nextElem = $(currentActElem).next();
+    var nextElem = $(currentActElem).next();
     $(nextElem).addClass("active");
     currentActElem = nextElem;
  });
 
 
 
-console.log(currentActElem);
+
+    
+
+
 
 
 
