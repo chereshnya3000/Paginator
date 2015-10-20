@@ -93,4 +93,9 @@ div.pagi {
   color: #fff !important;
 }
 
+.pagination div.inactive:hover {
+  background-color: #fff;
+  cursor: default;
+  color: #000;
+}
 

@@ -34,6 +34,8 @@ $(document).ready(function() {
     pagi.append("<span>" + pageIndex + "</span>");
   
     $(pagi.children().last()).click(function() {
+      $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
+      $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
       $(currentActElem).removeAttr("class");
       $(this).addClass("active");
       currentActElem = this;
@@ -42,13 +44,22 @@ $(document).ready(function() {
 
   var currentActElem = pagi.children()[0];
   $(currentActElem).addClass("active");  
+
+  // var myFirst = $(currentActElem).parent().children().first();
+  
+  /* Оптимизация обращения к первому элементу */
+  var firstElement = pagi.children()[0];
+
+  /* Оптимизация обращения к последнему элементу */
+  var lastElement = pagi.children()[linksQty - 1];
  
  $(".previous").click(function() {
-    var prevElem = $(currentActElem).prev();
-    var myFirst = $(currentActElem).parent().children().first();
-    if (myFirst.is($(currentActElem))){
+    if ($(firstElement).is($(currentActElem))){
     return;
   }
+    $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
+    $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
+    var prevElem = $(currentActElem).prev();
     $(currentActElem).removeAttr("class");
     $(prevElem).addClass("active");
     currentActElem = prevElem;
@@ -57,17 +68,42 @@ $(document).ready(function() {
 
 
 $(".next").click(function() {
-    $(currentActElem).removeAttr("class");
+    if ($(lastElement).is($(currentActElem))){
+    return;
+  }
+    $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
+    $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
     var nextElem = $(currentActElem).next();
+    $(currentActElem).removeAttr("class");
     $(nextElem).addClass("active");
     currentActElem = nextElem;
  });
 
 
+/* создаем обработчик события click на кнопку в начало */
+
+$(".tostart").click(function(){
+  $(currentActElem).removeAttr("class");
+  $(firstElement).addClass("active");
+  currentActElem = firstElement;
+});
+
+/* создаем обработчик события click на кнопку в конец */
+
+$(".toend").click(function(){
+  $(currentActElem).removeAttr("class");
+  $(lastElement).addClass("active");
+  currentActElem = lastElement;
+});
 
 
-    
+/* отключаем кнопки в начало и предыдущая */
+/* задание на следующий раз */
+/* нужно привязаться к какому-нибудь событию */
 
+if ($(firstElement) == $(currentActElem)) {
+  $(".tostart").addClass("inactive");
+}
 
 
 
