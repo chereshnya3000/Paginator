@@ -79,13 +79,23 @@ div.pagi {
   background-color: initial;
 }
 
-.pagi span {
+.pagi a {
   display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-decoration: none;
   border: 2px solid #808080;
   padding: 3px 5px;
   margin: -3px 3px;
   border-radius: 5px;
   color: #000;
+}
+
+.pagi a:hover {
+  cursor: pointer;
+  background-color: #86c157;
+  color: #fff;
 }
 
 .active {

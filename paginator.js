@@ -23,87 +23,74 @@ $(document).ready(function() {
   var maxOnPage = 10;
   var pagesQty = resultsAmount/maxOnPage
 
-  /* определяем переменную - количество ссылок отображаемых в pagination */
-  var linksQty = 10;
+ var comingData = [
+
+    {pageNumber: 1, url: "http://website.com/?p=1"}, 
+    {pageNumber: 2, url: "http://website.com/?p=2"},
+    {pageNumber: 3, url: "http://website.com/?p=3"}
+
+  ];
 
   var pagi = $(".pagi");
-  
-  for (var i = 0; i < linksQty; i++) 
-  {
+  for (var i = 0; i < 3 ; i++){
+
     var pageIndex = i+1;
-    pagi.append("<span>" + pageIndex + "</span>");
-  
-    $(pagi.children().last()).click(function() {
-      $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
-      $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
-      $(currentActElem).removeAttr("class");
-      $(this).addClass("active");
-      currentActElem = this;
-    });
+    pagi.append("<a href ='" + comingData[i].url + "'>" + comingData[i].pageNumber + "</a>");
+
   }
 
-  var currentActElem = pagi.children()[0];
-  $(currentActElem).addClass("active");  
-
-  // var myFirst = $(currentActElem).parent().children().first();
   
-  /* Оптимизация обращения к первому элементу */
-  var firstElement = pagi.children()[0];
 
-  /* Оптимизация обращения к последнему элементу */
-  var lastElement = pagi.children()[linksQty - 1];
+//   /* определяем переменную - количество ссылок отображаемых в pagination */
+//   var linksQty = 10;
+
+//   var pagi = $(".pagi");
+  
+//   for (var i = 0; i < linksQty; i++) 
+//   {
+//     var pageIndex = i+1;
+//     pagi.append("<span>" + pageIndex + "</span>");
+  
+//     $(pagi.children().last()).click(function() {
+//       $(currentActElem).removeAttr("class");
+//       $(this).addClass("active");
+//       currentActElem = this;
+//     });
+//   }
+
+//   var currentActElem = pagi.children()[0];
+//   $(currentActElem).addClass("active");  
  
- $(".previous").click(function() {
-    if ($(firstElement).is($(currentActElem))){
-    return;
-  }
-    $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
-    $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
-    var prevElem = $(currentActElem).prev();
-    $(currentActElem).removeAttr("class");
-    $(prevElem).addClass("active");
-    currentActElem = prevElem;
- });
+//  $(".previous").click(function() {
+//     var prevElem = $(currentActElem).prev();
+//     var myFirst = $(currentActElem).parent().children().first();
+//     if (myFirst.is($(currentActElem))){
+//     return;
+//   }
+//     $(currentActElem).removeAttr("class");
+//     $(prevElem).addClass("active");
+//     currentActElem = prevElem;
+//  });
 
 
 
-$(".next").click(function() {
-    if ($(lastElement).is($(currentActElem))){
-    return;
-  }
-    $(firstElement).removeAttr("class"); /* тушим первый элемент, если он активный */
-    $(lastElement).removeAttr("class"); /* тушим последний элемент, если он активный */
-    var nextElem = $(currentActElem).next();
-    $(currentActElem).removeAttr("class");
-    $(nextElem).addClass("active");
-    currentActElem = nextElem;
- });
+// $(".next").click(function() {
+//     var nextElem = $(currentActElem).next();
+//     var myLast = $(currentActElem).parent().children().last();
+//     if (myLast.is($(currentActElem))){
+//     return;
+//   }
+//     $(currentActElem).removeAttr("class");
+//     var nextElem = $(currentActElem).next();
+//     $(nextElem).addClass("active");
+//     currentActElem = nextElem;
+//  });
 
 
-/* создаем обработчик события click на кнопку в начало */
-
-$(".tostart").click(function(){
-  $(currentActElem).removeAttr("class");
-  $(firstElement).addClass("active");
-  currentActElem = firstElement;
-});
-
-/* создаем обработчик события click на кнопку в конец */
-
-$(".toend").click(function(){
-  $(currentActElem).removeAttr("class");
-  $(lastElement).addClass("active");
-  currentActElem = lastElement;
-});
 
 
-/* отключаем кнопки в начало и предыдущая */
-/* задание на следующий раз */
-/* нужно привязаться к какому-нибудь событию */
+    
 
-if ($(firstElement) == $(currentActElem)) {
-  $(".tostart").addClass("inactive");
-}
 
 
 
