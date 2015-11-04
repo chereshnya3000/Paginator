@@ -79,7 +79,7 @@ div.pagi {
   background-color: initial;
 }
 
-.pagi a {
+.pagi span {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -92,12 +92,6 @@ div.pagi {
   color: #000;
 }
 
-.pagi a:hover {
-  cursor: pointer;
-  background-color: #86c157;
-  color: #fff;
-}
-
 .active {
   background-color: #86c157;
   color: #fff !important;
@@ -108,4 +102,3 @@ div.pagi {
   cursor: default;
   color: #000;
 }
-
